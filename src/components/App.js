@@ -1,39 +1,29 @@
-import React from 'react'
+import React from 'react';
 
-import Filters from './Filters'
-import PetBrowser from './PetBrowser'
-
-class App extends React.Component {
-  constructor() {
-    super()
-
-    this.state = {
-      pets: [],
-      filters: {
-        type: 'all'
-      }
-    }
-  }
-
+class Filters extends React.Component {
   render() {
     return (
-      <div className="ui container">
-        <header>
-          <h1 className="ui dividing header">React Animal Shelter</h1>
-        </header>
-        <div className="ui container">
-          <div className="ui grid">
-            <div className="four wide column">
-              <Filters />
-            </div>
-            <div className="twelve wide column">
-              <PetBrowser />
-            </div>
-          </div>
+      <div className="ui form">
+        <h3>Animal type</h3>
+        <div className="field">
+          <select name="type" id="type" onChange={this.props.onChangeType}>
+            <option value="all">All</option>
+            <option value="cat">Cats</option>
+            <option value="dog">Dogs</option>
+            <option value="micropig">Micropigs</option>
+          </select>
+        </div>
+
+        <div className="field">
+          <button
+            onClick={this.props.onFindPetsClick}
+            className="ui secondary button">
+            Find pets
+          </button>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default Filters;
